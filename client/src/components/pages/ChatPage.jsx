@@ -172,7 +172,11 @@ export default function ChatPage() {
 
   return userData ? (
     <div className="select-none w-full h-full flex flex-row ">
-      <div className="flex flex-col items-stretch justify-start w-full h-full">
+      <div
+        className={`flex-col items-stretch justify-start w-full h-full ${
+          showInfo && window.innerWidth < 400 ? "hidden" : "flex"
+        }`}
+      >
         {/* {audioCall && <CallComponent />} */}
         <header className="flex flex-row items-center justify-between min-h-12 bg-background p-1">
           <div className="flex flex-row justify-center items-center gap-1">
@@ -207,16 +211,17 @@ export default function ChatPage() {
                     onlineUsers?.has(userData?._id)
                       ? "text-accent"
                       : "text-text-secondary"
-                  }`}
+                  } `}
                 >
                   {isTyping
                     ? t("typing")
                     : onlineUsers?.has(userData?._id)
                     ? t("online")
-                    : userData?.last_seen &&
-                      moment(userData?.last_seen).format(
+                    : userData?.last_seen && window.innerWidth > 390
+                    ? moment(userData?.last_seen).format(
                         "ddd, do MMM ,YYYY [at] h:mm A"
-                      )}
+                      )
+                    : moment(userData?.last_seen).format("ddd, [at] h:mm A")}
                 </p>
               </div>
             </div>
@@ -448,9 +453,9 @@ export default function ChatPage() {
                   id="text"
                   placeholder={t("enterMessage")}
                   // autoFocus
-                  className="p-[6px] max-h-40 w-full overflow-auto break-words bg-accent/50 rounded-full ring-0 focus:ring-offset-0 hover:ring-offset-0 resize-none"
+                  className="p-[6px] max-h-40 w-full overflow-auto break-words bg-accent/50 hover:bg-accent/75 rounded-full ring-0 focus:ring-offset-0 hover:ring-offset-0 resize-none"
                 />
-                <IconButton className="m-1 min-w-9 min-h-9" type="submit">
+                <IconButton className="m-1 p-1 text-accent/75 hover:text-accent hover:bg-transparent bg-transparent" type="submit">
                   <IoSend
                     size={20}
                     className={i18n.dir() === "rtl" && "rotate-180"}
@@ -463,7 +468,11 @@ export default function ChatPage() {
       </div>
       {showInfo && (
         <div
-          className={`w-fit min-w-60 max-w-80 px-1 bg-background flex flex-col justify-start text-text-primary`}
+          className={`px-1 bg-background flex flex-col justify-start text-text-primary ${
+            showInfo && window.innerWidth < 400
+              ? "w-full"
+              : "w-fit min-w-60 max-w-80"
+          }`}
         >
           <IconButton
             onClick={infoToggle}

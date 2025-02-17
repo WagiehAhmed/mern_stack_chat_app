@@ -64,7 +64,7 @@ export default function SearchModal({ onClose, open }) {
                 type="text"
                 placeholder={t("searchPlaceholder")}
                 autoFocus
-                className="pe-8 bg-accent ring-0 focus:ring-offset-0 hover:ring-offset-0 text-white placeholder:text-white"
+                className="pe-8 bg-accent ring-0 focus:ring-offset-0 hover:ring-offset-0 hover:bg-accent"
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
@@ -75,13 +75,13 @@ export default function SearchModal({ onClose, open }) {
                 </span>
               )} */}
               <IconButton
-                className="w-7 h-7 mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 hover:bg-accent/50 bg-transparent text-white"
+                className="mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 bg-transparent hover:bg-transparent text-white"
                 type="submit"
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
               >
-                <IoSearch size={20} />
+                <IoSearch size={25} />
               </IconButton>
             </div>
           </Form>

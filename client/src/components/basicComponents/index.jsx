@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 export function IconButton({ children, className: cn = "", ...props }) {
   return (
-    <button className={`icon-button ${cn}`} {...props} >
+    <button className={`icon-button ${cn}`} {...props}>
       {children}
     </button>
   );
@@ -34,13 +34,13 @@ export function StandardModal({ onClose, header = "", children }) {
           e.stopPropagation();
         }}
       >
-        <div className="flex flex-row justify-between items-center p-1">
-          <h4 className="self-center text-center text-md text-text-primary font-semibold capitalize w-full min-h-8">
+        <div className="flex flex-row justify-between items-center p-1 ">
+          <h4 className="self-center text-center text-md text-text-primary font-semibold capitalize flex-grow min-h-8">
             {header}
           </h4>
           <IconButton
             onClick={onClose}
-            className="self-end text-white w-7 h-7 "
+            className="bg-transparent hover:text-white "
           >
             <CgClose size={20} />
           </IconButton>
@@ -76,7 +76,7 @@ export function ModernModal({ onClose, children }) {
           e.stopPropagation();
           onClose();
         }}
-        className="absolute top-2 end-2 text-white w-7 h-7"
+        className="absolute top-2 end-2 bg-transparent hover:text-white"
       >
         <CgClose size={20} />
       </IconButton>

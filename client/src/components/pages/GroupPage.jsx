@@ -82,7 +82,6 @@ export default function GroupPage() {
 
   const sendMessage2 = ({ image, video, audio }) => {
     sendMessage({ text: messageText, image, video, audio });
-    
   };
 
   const { mutate, isLoading } = useUploadMessageMedia(sendMessage2);
@@ -159,7 +158,11 @@ export default function GroupPage() {
 
   return groupData ? (
     <div className="select-none w-full h-full flex flex-row ">
-      <div className="flex flex-col items-stretch justify-start w-full h-full">
+      <div
+        className={`flex-col items-stretch justify-start w-full h-full ${
+          showInfo && window.innerWidth < 400 ? "hidden" : "flex"
+        }`}
+      >
         <header className="flex flex-row items-center justify-between min-h-12 bg-background p-1">
           <div className="flex flex-row justify-center items-center gap-1">
             <IconButton
@@ -413,9 +416,12 @@ export default function GroupPage() {
                   id="text"
                   placeholder={t("enterMessage")}
                   // autoFocus
-                  className="p-[6px] max-h-40 w-full overflow-auto break-words rounded-full ring-0 focus:ring-offset-0 hover:ring-offset-0 bg-accent/50 resize-none"
+                  className="p-[6px] max-h-40 w-full overflow-auto break-words rounded-full ring-0 focus:ring-offset-0 hover:ring-offset-0 bg-accent/50 hover:bg-accent/75 resize-none"
                 />
-                <IconButton className="m-1 min-w-9 min-h-9" type="submit">
+                <IconButton
+                  className="m-1 p-1 text-accent/75 hover:text-accent hover:bg-transparent bg-transparent"
+                  type="submit"
+                >
                   <IoSend
                     size={20}
                     className={i18n.dir() === "rtl" && "rotate-180"}
@@ -428,7 +434,11 @@ export default function GroupPage() {
       </div>
       {showInfo && (
         <div
-          className={`bg-accent/10 w-fit min-w-60 max-w-80 px-1 start-0 flex flex-col justify-start text-text-primary`}
+          className={`bg-accent/10 px-1 start-0 flex flex-col justify-start text-text-primary  ${
+            showInfo && window.innerWidth < 400
+              ? "w-full"
+              : "w-fit min-w-60 max-w-80"
+          }`}
         >
           <IconButton
             onClick={infoToggle}
@@ -458,9 +468,9 @@ export default function GroupPage() {
               </span>
             </p>
           </div>
-          <div className="w-full h-full ">
+          <div className="w-full h-full">
             <p className="text-sm font-medium">{t("members")}</p>
-            <div className="flex flex-col justify-start gap-2 p-1 max-h-[380px] overflow-y-auto">
+            <div className="flex flex-col justify-start gap-2 p-1 max-h-[465px] overflow-y-auto">
               {groupData?.members.map((member, index) => (
                 <div
                   key={index}

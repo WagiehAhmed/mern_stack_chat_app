@@ -94,7 +94,11 @@ export default function Groups() {
           <p className="capitalize text-center text-lg text-text-primary font-semibold">
             {t("groups")}
           </p>
-          <IconButton title={t("addGroupLabel")} onClick={createGroupTragger}>
+          <IconButton
+            title={t("addGroupLabel")}
+            onClick={createGroupTragger}
+            className="text-white"
+          >
             <AiOutlineUsergroupAdd size={20} />
           </IconButton>
         </div>
@@ -104,7 +108,7 @@ export default function Groups() {
             className="flex flex-col justify-evenly gap-2"
             onSubmit={handleSubmit(dataHandler)}
           >
-            <div className="relative">
+            <div className="relative ">
               <Input
                 {...register("keyword", {
                   required: { value: true, message: "Keyword is required" },
@@ -112,7 +116,7 @@ export default function Groups() {
                 id="keyword"
                 type="text"
                 placeholder={t("searchPlaceholder")}
-                className="p-2 pe-10 ring-0 focus:ring-offset-0 hover:ring-offset-0"
+                className="p-2 pe-10 ring-0 focus:ring-offset-0 hover:ring-offset-0 "
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
@@ -123,7 +127,7 @@ export default function Groups() {
                         </span>
                       )} */}
               <IconButton
-                className="w-7 h-7 mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 bg-transparent"
+                className="mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 bg-transparent hover:bg-transparent text-white"
                 type="submit"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -167,11 +171,13 @@ export default function Groups() {
                       {lastMessage && (
                         <div className="text-xs text-text-secondary flex flex-row justify-between items-center">
                           <div className="flex flex-row">
-                            <p className="me-1 max-w-fit line-clamp-1">
+                            <p className="me-1 max-w-fit text-nowrap">
                               {userDetails?._id.toString() ===
                               lastMessage?.sender?._id.toString()
                                 ? t("you").concat(" : ")
-                                : lastMessage?.sender?.name.concat(" : ")}
+                                : lastMessage?.sender?.name
+                                    .split(" ")[0]
+                                    .concat(" : ")}
                             </p>
                             {lastMessage?.image?.filePath !== "" ? (
                               <div className="flex flex-row flex-grow items-center gap-1 w-fit">
@@ -180,7 +186,7 @@ export default function Groups() {
                                   className="text-text-secondary  w-3 h-3 mt-[1px]"
                                 />
                                 {lastMessage?.text !== "" ? (
-                                  <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-24">
+                                  <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-20">
                                     {lastMessage?.text}
                                   </p>
                                 ) : (
@@ -194,7 +200,7 @@ export default function Groups() {
                                   className="text-text-secondary w-3 h-3 mt-[1px]"
                                 />
                                 {lastMessage?.text !== "" ? (
-                                  <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-24">
+                                  <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-20">
                                     {lastMessage?.text}
                                   </p>
                                 ) : (
@@ -202,7 +208,7 @@ export default function Groups() {
                                 )}
                               </div>
                             ) : (
-                              <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-24">
+                              <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-20">
                                 {lastMessage?.text}
                               </p>
                             )}

@@ -69,12 +69,12 @@ export default function ResetPasswordForm() {
               type={showPassword ? "text" : "password"}
               placeholder={t("passwordPlaceholder")}
             />
-            <div className="w-fit h-fit absolute transform top-1/2 end-2  -translate-y-1/2 hover:cursor-pointer">
+            <div className="w-fit h-fit absolute transform top-1/2 end-3 -translate-y-1/2 hover:cursor-pointer">
               {showPassword ? (
                 <IconButton
                   onClick={() => setShowPasswrod(false)}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEye size={25} />
                 </IconButton>
@@ -82,7 +82,7 @@ export default function ResetPasswordForm() {
                 <IconButton
                   onClick={() => setShowPasswrod(true)}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEyeOff size={25} />
                 </IconButton>
@@ -116,12 +116,12 @@ export default function ResetPasswordForm() {
               placeholder={t("confirmPasswordPlaceholder")}
             />
 
-            <div className="w-fit h-fit absolute transform top-1/2 end-2  -translate-y-1/2 hover:cursor-pointer">
+            <div className="w-fit h-fit absolute transform top-1/2 end-3 -translate-y-1/2 hover:cursor-pointer">
               {showConfirmPassword ? (
                 <IconButton
                   onClick={() => setShowconfirmPassword(false)}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEye size={25} />
                 </IconButton>
@@ -129,7 +129,7 @@ export default function ResetPasswordForm() {
                 <IconButton
                   onClick={() => setShowconfirmPassword(true)}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEyeOff size={25} />
                 </IconButton>

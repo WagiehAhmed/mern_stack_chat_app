@@ -100,7 +100,7 @@ export default function Chats() {
             className="flex flex-col justify-evenly gap-2"
             onSubmit={handleSubmit(dataHandler)}
           >
-            <div className="relative">
+            <div className="relative ">
               <Input
                 {...register("keyword", {
                   required: { value: true, message: "Keyword is required" },
@@ -108,7 +108,7 @@ export default function Chats() {
                 id="keyword"
                 type="text"
                 placeholder={t("searchPlaceholder")}
-                className="p-2 pe-10 ring-0 focus:ring-offset-0 hover:ring-offset-0"
+                className="p-2 pe-10 ring-0 focus:ring-offset-0 hover:ring-offset-0 "
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
@@ -119,7 +119,7 @@ export default function Chats() {
                         </span>
                       )} */}
               <IconButton
-                className="w-7 h-7 mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 bg-transparent"
+                className="mx-2 absolute top-1/2 end-0 transform -translate-y-1/2 bg-transparent hover:bg-transparent text-white"
                 type="submit"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -146,7 +146,7 @@ export default function Chats() {
                         navigate(`${data?._id}`, { replace: true })
                       }
                     />
-                    <p className="text-[10px] text-text-primary font-semibold max-w-24 text-start text-ellipsis line-clamp-1">
+                    <p className="text-[10px] text-text-primary font-semibold max-w-20 text-start text-ellipsis line-clamp-1">
                       {userDetails?.name}
                     </p>
                   </div>
@@ -192,11 +192,13 @@ export default function Chats() {
                     {chat?.lastMessage && (
                       <div className="text-xs text-text-secondary flex flex-row justify-between items-center">
                         <div className="flex flex-row ">
-                          <p className="me-1 max-w-fit line-clamp-1">
+                          <p className="me-1 max-w-fit text-nowrap">
                             {userDetails?._id.toString() ===
                             chat?.lastMessage?.sender?._id.toString()
                               ? t("you").concat(" : ")
-                              : chat?.lastMessage?.sender?.name.concat(" : ")}
+                              : chat?.lastMessage?.sender?.name
+                                  .split(" ")[0]
+                                  .concat(" : ")}
                           </p>
 
                           {chat?.lastMessage?.image?.filePath !== "" ? (
@@ -206,7 +208,7 @@ export default function Chats() {
                                 className="text-text-secondary w-3 h-3 mt-[1px]"
                               />
                               {chat?.lastMessage?.text !== "" ? (
-                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-24">
+                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-20">
                                   {chat?.lastMessage?.text}
                                 </p>
                               ) : (
@@ -220,7 +222,7 @@ export default function Chats() {
                                 className="text-text-secondary w-3 h-3 mt-[1px]"
                               />
                               {chat?.lastMessage?.text !== "" ? (
-                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-24">
+                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-20">
                                   {chat?.lastMessage?.text}
                                 </p>
                               ) : (
@@ -234,7 +236,7 @@ export default function Chats() {
                                 className="text-text-secondary w-3 h-3 mt-[1px]"
                               />
                               {chat?.lastMessage?.text !== "" ? (
-                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-24">
+                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-60 md:max-w-20">
                                   {chat?.lastMessage?.text}
                                 </p>
                               ) : (
@@ -242,7 +244,7 @@ export default function Chats() {
                               )}
                             </div>
                           ) : (
-                            <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-24 ">
+                            <p className="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-20 ">
                               {chat?.lastMessage?.text}
                             </p>
                           )}

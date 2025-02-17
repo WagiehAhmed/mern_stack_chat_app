@@ -73,12 +73,12 @@ export default function CheckPasswordForm({ userInfo }) {
               placeholder={t("passwordPlaceholder")}
               autoFocus
             />
-            <div className="w-fit h-fit absolute transform top-1/2 end-2 -translate-y-1/2 hover:cursor-pointer">
+            <div className="w-fit h-fit absolute transform top-1/2 end-3 -translate-y-1/2 hover:cursor-pointer">
               {showPassword ? (
                 <IconButton
                   onClick={hidePasswordHandler}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEye size={20} />
                 </IconButton>
@@ -86,7 +86,7 @@ export default function CheckPasswordForm({ userInfo }) {
                 <IconButton
                   onClick={showPasswordHandler}
                   type="button"
-                  className="bg-transparent hover:bg-transparent text-text-primary hover:text-text-secondary"
+                  className="bg-transparent hover:bg-transparent text-text-secondary hover:text-text-primary"
                 >
                   <IoEyeOff size={20} />
                 </IconButton>
