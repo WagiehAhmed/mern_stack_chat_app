@@ -1,0 +1,23 @@
+# Ignore global files/directories
+.gitignore-global
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment variables
+.env
+
+# Ignore logs and temp files
+logs/
+*.log
+npm-debug.log*
+
+# Ignore build artifacts
+dist/
+build/
+out/
